@@ -1,8 +1,11 @@
 import './Formulario.css'
 import CampoTexto from '../campoTexto'
 import ListaSuspensa from '../ListaSupensa';
+import Botao from '../Botao';
+import React, { useState } from 'react';
 
-const Formulario = () => {
+
+const Formulario = (props) => {
 
     const funções = [
         'Top',
@@ -11,16 +14,31 @@ const Formulario = () => {
         'Adc',
         'Sup'
     ]
-    return(
-        <section class = 'formulario'>
-            <form class = 'infos'>
-            <h2>Informações do time</h2>
-            <CampoTexto label="Usuário" placeholder="Digite seu nick"/>
-            <CampoTexto label="Campeão" placeholder="Digite seu main"/>
-            <ListaSuspensa label="Função"itens={funções}/>
-            </form>
-        </section>
-    )
+
+    const [nick, setNick] = useState('')
+    const [main,setMain] = useState('')
+    const [funcao,setFuncao] = useState('')
+
+    const aoSalvar = (evento) =>{
+    evento.preventDefault()
+    props.aoJogadorCadastrado({
+      nick,
+      main,
+      funcao
+    })
+  }
+return (
+    <section className="formulario">
+      <form className="infos" onSubmit={aoSalvar}>
+        <h2>Informações do time</h2>
+        <CampoTexto obrigatorio={true} label="Usuário" placeholder="Digite seu nick" valor={nick} aoAlterado={valor => setNick(valor)} />
+        <CampoTexto obrigatorio={true} label="Campeão" placeholder="Digite seu main" valor={main} aoAlterado={valor => setMain(valor)} />
+        <ListaSuspensa obrigatorio={true} label="Função" itens={funções} valor={funcao} aoAlterado = {valor => setFuncao(valor)}/>
+        <Botao className="glitch" texto="Criar" />
+      </form>
+    </section>
+  );
+  
 }
 
 export default Formulario;

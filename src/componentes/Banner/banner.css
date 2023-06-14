@@ -1,9 +1,10 @@
 .banner{
-    background-color: #627BF7;
+    background-color: rgba(253, 14, 54, 0.788);
     text-align: center;
 
 }
 .banner img{
     max-width: 100%;
-    width: 1920px;
+    width: 1250px;
+    height: 600px;
 }
