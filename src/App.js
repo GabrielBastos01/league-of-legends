@@ -5,6 +5,33 @@ import Time from './componentes/Time';
 
 function App() {
 
+  const times = [
+    {
+      nome:'Top',
+      corPrimaria:'#3d43b4',
+      corSecundaria:'#1ade49',
+    },
+    {
+      nome:'Jungler',
+      corPrimaria:'#de004e',
+      corSecundaria:'#321450',
+    },
+    {
+      nome:'Mid',
+      corPrimaria:'#0b468c',
+      corSecundaria:'#ac61b9',
+    },
+    {
+      nome:'Adc',
+      corPrimaria:'#65dc98',
+      corSecundaria:'#222035',
+    },
+    {
+      nome:'Sup',
+      corPrimaria:'#85ebd9',
+      corSecundaria:'#2f404d',
+    }
+  ]
   const [jogadores, setJogadores] = useState([])
 
   const aoNovoJogadorAdicionado = (jogador) => {
@@ -16,11 +43,7 @@ function App() {
     <div className="App">
       <Banner/>
       <Formulario aoJogadorCadastrado={jogador => aoNovoJogadorAdicionado(jogador)}/>
-      <Time nome="Top"/>
-      <Time nome="Jungler"/>
-      <Time nome="Mid"/>
-      <Time nome="Adc"/>
-      <Time nome="Suporte"/>
+      {times.map(time => <Time key={time.nome}nome={time.nome} corPrimaria={time.corPrimaria} corSecundaria={time.corSecundaria}/>)}
     </div>
   )
 }
