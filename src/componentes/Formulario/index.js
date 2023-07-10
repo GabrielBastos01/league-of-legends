@@ -7,14 +7,7 @@ import React, { useState } from 'react';
 
 const Formulario = (props) => {
 
-    const funções = [
-        'Top',
-        'Jungler',
-        'Mid',
-        'Adc',
-        'Sup'
-    ]
-
+    
     const [nick, setNick] = useState('')
     const [main,setMain] = useState('')
     const [funcao,setFuncao] = useState('')
@@ -26,6 +19,9 @@ const Formulario = (props) => {
       main,
       funcao
     })
+    setNick('')
+    setMain('')
+    setFuncao('')
   }
 return (
     <section className="formulario">
@@ -33,7 +29,7 @@ return (
         <h2>Informações do time</h2>
         <CampoTexto obrigatorio={true} label="Usuário" placeholder="Digite seu nick" valor={nick} aoAlterado={valor => setNick(valor)} />
         <CampoTexto obrigatorio={true} label="Campeão" placeholder="Digite seu main" valor={main} aoAlterado={valor => setMain(valor)} />
-        <ListaSuspensa obrigatorio={true} label="Função" itens={funções} valor={funcao} aoAlterado = {valor => setFuncao(valor)}/>
+        <ListaSuspensa obrigatorio={true} label="Função" itens={props.funcoes} valor={funcao} aoAlterado = {valor => setFuncao(valor)}/>
         <Botao className="glitch" texto="Criar" />
       </form>
     </section>
