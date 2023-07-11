@@ -2,7 +2,6 @@ import { useState } from 'react';
 import Banner from './componentes/Banner';
 import Formulario from './componentes/Formulario/index'
 import Time from './componentes/Time';
-import Jogador from './componentes/Jogador';
 
 function App() {
 
